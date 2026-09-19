@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minecraft Quest Live</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101510;color:#fff;font-family:Arial,sans-serif}
+main{max-width:900px;margin:auto;padding:20px}.panel{background:#222;border:4px solid #555;padding:22px;box-shadow:0 8px 30px #000}
+h1,h2{ text-shadow:3px 3px #000}button,input{font-size:18px;padding:13px;margin:7px;border:3px solid #111;font-weight:800}button{background:#65ad42;color:#fff;cursor:pointer;box-shadow:4px 4px #000}input{width:min(300px,90%)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;background:#292929;border:3px solid #666}.creeper{border-color:#55a83b}.diamond{border-color:#52bde8}.ok{color:#8cff72}.wait{color:#ffd966}.hidden{display:none}.big{font-size:48px}.xp{height:14px;background:#111;margin:10px 0}.xp i{display:block;height:100%;background:#62d53f;width:10%}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style></head><body><main id="app"></main>
+<script>
+let ws,code="",role="",game=null,quests=[];
+const app=document.getElementById("app");
+function connect(){
+ code=document.getElementById("code").value.trim().toUpperCase();
+ role=document.getElementById("role").value;
+ if(!code)return alert("Skriv en spelkod.");
+ ws=new WebSocket((location.protocol==="https:"?"wss://":"ws://")+location.host);
+ ws.onopen=()=>ws.send(JSON.stringify({type:"join",code,role}));
+ ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.type==="joined"||m.type==="state"){game=m.game;quests=m.quests||quests;render()}};
+ ws.onclose=()=>setTimeout(()=>connect(),1500);
+}
+function send(type,extra={}){if(ws?.readyState===1)ws.send(JSON.stringify({type,code,role,...extra}))}
+function login(){
+ app.innerHTML=`<div class="panel"><h1>⛏️ MINECRAFT QUEST</h1><p>Välj roll och ange spelkoden.</p>
+ <input id="code" placeholder="t.ex. DRAGON7" maxlength="12">
+ <select id="role"><option value="gm">🧙 Game Master – S23+</option><option value="creeper">🟩 Team Creeper – iPad</option><option value="diamond">💎 Team Diamond – Galaxy Tab</option></select><br>
+ <button onclick="connect()">STARTA SPEL</button></div>`;
+}
+function questText(q){
+ return [
+ "Hitta 2 trä och 2 sten. När alla resurser är hittade, tryck KLAR.",
+ "Besegra 5 zombies genom att pricka målen med snöbollar. Inga kast på personer.",
+ "Varje spelare ska hitta sin egen diamant. 4 spelare = 4 diamanter.",
+ "Vad behövs för att crafta ett Diamond Sword?",
+ "Skynda er till Safe Room! Ni har 30 sekunder.",
+ "Bygg ett torn med 6 träbitar. Minst 20 cm högt och stå själv i minst 10 sekunder.",
+ "Ta er genom Spider Web utan att röra nätet.",
+ "Bygg en Nether Portal: 4 Blocks bred, 5 Blocks hög, 10 Obsidian Blocks.",
+ "Båda lagen måste samarbeta för att öppna End Portal.",
+ "Ni har klarat allt! Diamond Chest är upplåst."
+ ][q];
+}
+function render(){
+ if(!game)return;
+ if(role==="gm")renderGM(); else renderTeam();
+}
+function renderTeam(){
+ const t=game.teams[role], q=quests[t.q];
+ app.innerHTML=`<div class="panel"><h1>${role==="creeper"?"🟩":"💎"} ${role==="creeper"?"TEAM CREEPER":"TEAM DIAMOND"}</h1>
+ <p>Quest ${t.q+1}/10</p><h2>${q.icon} ${q.title}</h2><p>${questText(t.q)}</p>
+ <div class="xp"><i style="width:${(t.q+1)*10}%"></i></div>
+ ${t.approved?'<h2 class="ok">✓ Quest godkänd!</h2><p>Vänta på att Game Master låser upp nästa.</p>':t.done?'<h2 class="wait">⏳ Klar! Vänta på Game Master.</h2>':'<button onclick="send(\'team_done\')">✓ KLAR</button>'}
+ </div>`;
+}
+function renderGM(){
+ const c=game.teams.creeper,d=game.teams.diamond;
+ app.innerHTML=`<div class="panel"><h1>🧙 GAME MASTER</h1><p>Spelkod: <b>${code}</b></p>
+ <div class="grid">${teamCard("creeper","🟩 Team Creeper",c)}${teamCard("diamond","💎 Team Diamond",d)}</div>
+ <div class="card"><h2>🔓 Nästa quest</h2><p>${c.approved&&d.approved?"Båda lagen är godkända!":"Båda lagen måste vara klara och godkända."}</p>
+ <button ${c.approved&&d.approved?"":"disabled"} onclick="send('unlock_both')">🔓 LÅS UPP NÄSTA QUEST FÖR BÅDA</button>
+ <button onclick="send('reset')">↻ STARTA OM SPELET</button></div></div>`;
+}
+function teamCard(key,name,t){
+ const q=quests[t.q];
+ return `<div class="card ${key}"><h2>${name}</h2><h3>Quest ${t.q+1}: ${q.icon} ${q.title}</h3>
+ <p>${t.approved?'<span class="ok">✓ GODKÄND</span>':t.done?'<span class="wait">KLAR – redo för godkännande</span>':'⏳ Pågår'}</p>
+ <button ${t.done&&!t.approved?"":"disabled"} onclick="send('approve',{team:'${key}'})">✅ GODKÄNN</button></div>`;
+}
+login();
+</script></body></html>
