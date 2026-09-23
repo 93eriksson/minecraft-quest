@@ -7,7 +7,6 @@ Three-device Minecraft birthday quest using Node.js + WebSockets.
 - Team Diamond: Galaxy Tab
 - Shared game state per game code
 - Game Master dashboard with direct quest navigation
-- Game Master can approve teams independently
 - Quest 4: interactive crafting table recipe puzzle
 - Quest 5: automatic multiple-choice completion
 - Quest 6: 7-second warning delay + 30-second Creeper countdown
