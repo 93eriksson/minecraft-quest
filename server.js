@@ -26,7 +26,7 @@ function startQuest(t,q){t.q=q;t.done=false;t.approved=false;t.timerStart=q===5?
 function broadcast(code){const game=games.get(code);if(!game)return;const msg=JSON.stringify({type:"state",game,quests});for(const c of wss.clients)if(c.readyState===1&&c.gameCode===code)c.send(msg)}
 function safeCode(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,12)}
 function setupFragments(game){game.teams.creeper._fragment="ENDER";game.teams.diamond._fragment="DRAGON";game.teams.creeper.codeFragment="";game.teams.diamond.codeFragment=""}
-remove paired advancewss.on("connection",ws=>{
+wss.on("connection",ws=>{
  ws.on("message",raw=>{
   let m;try{m=JSON.parse(raw)}catch{return}
   const code=safeCode(m.code);if(!code)return;
