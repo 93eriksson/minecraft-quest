@@ -53,9 +53,9 @@ wss.on("connection",ws=>{
    }
    return;
   }
-  if(m.type==="jump_to_quest"&&m.role==="gm"){
+  if(m.type==="jump_team_to_quest"&&m.role==="gm"&&(m.team==="creeper"||m.team==="diamond")){
    const q=Number(m.quest);
-   if(Number.isInteger(q)&&q>=0&&q<quests.length){startQuest(game.teams.creeper,q);startQuest(game.teams.diamond,q);if(q===9){game.teams.creeper.codeFragment=game.teams.creeper._fragment||"";game.teams.diamond.codeFragment=game.teams.diamond._fragment||""}broadcast(code)}
+   if(Number.isInteger(q)&&q>=0&&q<quests.length){const t=game.teams[m.team];startQuest(t,q);if(q===9)t.codeFragment=t._fragment||"";broadcast(code)}
    return;
   }
   if(m.type==="reset"&&m.role==="gm"){const g=newGame();setupFragments(g);games.set(code,g);broadcast(code);return}
