@@ -38,6 +38,7 @@ wss.on("connection",ws=>{
   }
   const game=games.get(code);if(!game)return;
   if(m.type==="team_done"&&(m.role==="creeper"||m.role==="diamond")){game.teams[m.role].done=true;broadcast(code);return}
+  if(m.type==="crafting_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===3)t.done=true;broadcast(code);return}
   if(m.type==="auto_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===4)t.done=true;broadcast(code);return}
   if(m.type==="timer_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===5)t.done=true;broadcast(code);return}
   if(m.type==="portal_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===8)t.done=true;broadcast(code);return}
