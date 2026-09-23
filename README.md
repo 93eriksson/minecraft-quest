@@ -6,6 +6,7 @@ Three-device Minecraft birthday quest using Node.js + WebSockets.
 - Team Creeper: iPad
 - Team Diamond: Galaxy Tab
 - Shared game state per game code
+- Game Master dashboard with direct quest navigation
 - Quest 4: interactive crafting table recipe puzzle
 - Quest 5: automatic multiple-choice completion
 - Quest 6: 7-second warning delay + 30-second Creeper countdown

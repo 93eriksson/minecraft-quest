@@ -45,6 +45,11 @@ wss.on("connection",ws=>{
   if(m.type==="teamwork_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===9)t.done=true;broadcast(code);return}
   if(m.type==="approve"&&m.role==="gm"&&(m.team==="creeper"||m.team==="diamond")){const t=game.teams[m.team];if(t.done)t.approved=true;broadcast(code);return}
   if(m.type==="unlock_both"&&m.role==="gm"){advance(game);return}
+  if(m.type==="jump_to_quest"&&m.role==="gm"){
+   const q=Number(m.quest);
+   if(Number.isInteger(q)&&q>=0&&q<quests.length){startQuest(game.teams.creeper,q);startQuest(game.teams.diamond,q);broadcast(code)}
+   return;
+  }
   if(m.type==="reset"&&m.role==="gm"){const g=newGame();setupFragments(g);games.set(code,g);broadcast(code);return}
  });
 });
