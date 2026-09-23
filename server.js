@@ -20,14 +20,12 @@ const games = new Map();
 const quests = [
  {title:"Resource Hunt",icon:"🌲"},{title:"Zombie Attack",icon:"🧟"},{title:"Diamond Hunt",icon:"💎"},{title:"Build a Crafting Table",icon:"🪵"},{title:"Crafting – Diamond Sword",icon:"⚔️"},{title:"Creeper Explosion",icon:"💥"},{title:"Survive the Night",icon:"🏰"},{title:"Spider Cave",icon:"🕷️"},{title:"Nether Portal",icon:"🔥"},{title:"The Final Teamwork",icon:"🤝"},{title:"Diamond Chest",icon:"🎁"}
 ];
-function newTeam(){return {q:0,done:false,approved:false,timerStart:null,codeFragment:""}}
+function newTeam(){return {q:0,done:false,approved:false,completed:[],timerStart:null,codeFragment:""}}
 function newGame(){return {teams:{creeper:newTeam(),diamond:newTeam()},sharedCode:"ENDERDRAGON"}}
 function startQuest(t,q){t.q=q;t.done=false;t.approved=false;t.timerStart=q===5?Date.now()+7000:null;t.codeFragment=q===9?(t._fragment||""):""}
 function broadcast(code){const game=games.get(code);if(!game)return;const msg=JSON.stringify({type:"state",game,quests});for(const c of wss.clients)if(c.readyState===1&&c.gameCode===code)c.send(msg)}
 function safeCode(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,12)}
 function setupFragments(game){game.teams.creeper._fragment="ENDER";game.teams.diamond._fragment="DRAGON";game.teams.creeper.codeFragment="";game.teams.diamond.codeFragment=""}
-function advance(game){const c=game.teams.creeper,d=game.teams.diamond;if(c.q!==d.q||!c.approved||!d.approved||c.q>=quests.length-1)return false;const nq=c.q+1;startQuest(c,nq);startQuest(d,nq);if(nq===9){c.codeFragment=c._fragment;d.codeFragment=d._fragment}broadcastForGame(game);return true}
-function broadcastForGame(game){for(const c of wss.clients)if(c.gameCode){for(const [code,g] of games)if(g===game&&c.gameCode===code&&c.readyState===1)c.send(JSON.stringify({type:"state",game,quests}))}}
 wss.on("connection",ws=>{
  ws.on("message",raw=>{
   let m;try{m=JSON.parse(raw)}catch{return}
@@ -44,13 +42,24 @@ wss.on("connection",ws=>{
   if(m.type==="portal_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===8)t.done=true;broadcast(code);return}
   if(m.type==="teamwork_done"&&(m.role==="creeper"||m.role==="diamond")){const t=game.teams[m.role];if(t.q===9)t.done=true;broadcast(code);return}
   if(m.type==="approve"&&m.role==="gm"&&(m.team==="creeper"||m.team==="diamond")){const t=game.teams[m.team];if(t.done)t.approved=true;broadcast(code);return}
-  if(m.type==="unlock_both"&&m.role==="gm"){advance(game);return}
+  if(m.type==="unlock_team"&&m.role==="gm"&&(m.team==="creeper"||m.team==="diamond")){
+   const t=game.teams[m.team];
+   if(t.approved&&t.q<quests.length-1){
+    if(!Array.isArray(t.completed))t.completed=[];
+    if(!t.completed.includes(t.q))t.completed.push(t.q);
+    const nq=t.q+1;startQuest(t,nq);
+    if(nq===9)t.codeFragment=t._fragment||"";
+    broadcast(code);
+   }
+   return;
+  }
   if(m.type==="jump_to_quest"&&m.role==="gm"){
    const q=Number(m.quest);
-   if(Number.isInteger(q)&&q>=0&&q<quests.length){startQuest(game.teams.creeper,q);startQuest(game.teams.diamond,q);broadcast(code)}
+   if(Number.isInteger(q)&&q>=0&&q<quests.length){startQuest(game.teams.creeper,q);startQuest(game.teams.diamond,q);if(q===9){game.teams.creeper.codeFragment=game.teams.creeper._fragment||"";game.teams.diamond.codeFragment=game.teams.diamond._fragment||""}broadcast(code)}
    return;
   }
   if(m.type==="reset"&&m.role==="gm"){const g=newGame();setupFragments(g);games.set(code,g);broadcast(code);return}
  });
 });
 server.listen(PORT,()=>console.log(`Minecraft Quest running on port ${PORT}`));
+
