@@ -66,6 +66,7 @@ function questText(i){return [
 "Hitta 2 trä och 2 sten. När alla resurser är hittade, tryck KLAR.",
 "Besegra 5 zombies genom att pricka målen med snöbollar. Inga kast på personer.",
 "Varje spelare ska hitta sin egen Diamond. 4 spelare = 4 Diamonds.",
+"Bygg ett crafting table av 4 klossar i en 2×2-kvadrat. Visa bygget för Game Master och tryck KLAR.",
 "Vad behövs för att crafta ett Diamond Sword? Välj rätt alternativ.",
 "Creepern kommer! Ta er till Safe Room när nedräkningen startar.",
 "Bygg ett torn med exakt 6 träbitar. Minst 20 cm högt och stå själv i minst 10 sekunder.",
@@ -78,18 +79,18 @@ function renderTeam(){
  const t=game.teams[role],q=quests[t.q];
  let body="";
  if(t.q===1) body=zombieBody();
- else if(t.q===3) body=choiceBody();
- else if(t.q===4) body=timerBody(t);
- else if(t.q===7) body=portalBody();
- else if(t.q===8) body=teamworkBody(t);
- else if(t.q===9) body=finalBody();
+ else if(t.q===4) body=choiceBody();
+ else if(t.q===5) body=timerBody(t);
+ else if(t.q===8) body=portalBody();
+ else if(t.q===9) body=teamworkBody(t);
+ else if(t.q===10) body=finalBody();
  const status=t.approved?'<h2 class="ok">✓ Quest godkänd!</h2><p>Vänta på nästa quest.</p>':t.done?'<h2 class="wait">✓ KLAR!</h2><p>Vänta på Game Master.</p>':'';
- const manual=t.q!==3&&t.q!==4&&t.q!==7&&t.q!==8&&!t.done;
- app.innerHTML=`<div class="panel"><h1>${role==="creeper"?"🟩":"💎"} ${role==="creeper"?"TEAM CREEPER":"TEAM DIAMOND"}</h1><p><b>Quest ${t.q+1}/10</b></p><h2>${q.icon} ${q.title}</h2><p>${questText(t.q)}</p><div class="xp"><i style="width:${(t.q+1)*10}%"></i></div>${body}${status}${manual?'<button onclick="send(\'team_done\')">✓ KLAR</button>':''}</div>`;
+ const manual=t.q!==4&&t.q!==5&&t.q!==8&&t.q!==9&&!t.done;
+ app.innerHTML=`<div class="panel"><h1>${role==="creeper"?"🟩":"💎"} ${role==="creeper"?"TEAM CREEPER":"TEAM DIAMOND"}</h1><p><b>Quest ${t.q+1}/${quests.length}</b></p><h2>${q.icon} ${q.title}</h2><p>${questText(t.q)}</p><div class="xp"><i style="width:${((t.q+1)/quests.length)*100}%"></i></div>${body}${status}${manual?'<button onclick="send(\'team_done\')">✓ KLAR</button>':''}</div>`;
  if(t.q===1 && lastAudioQuest!==t.q){lastAudioQuest=t.q;setTimeout(()=>sfx('zombie'),80);setTimeout(()=>sfx('zombie'),1050)}
- if(t.q===4)startTimer(t);
- if(t.q===8)setTimeout(()=>focusCode(),50);
- if(t.q===9 && lastAudioQuest!==t.q){lastAudioQuest=t.q;setTimeout(()=>{sfx('victory');showFinalCelebration()},120)}
+ if(t.q===5)startTimer(t);
+ if(t.q===9)setTimeout(()=>focusCode(),50);
+ if(t.q===10 && lastAudioQuest!==t.q){lastAudioQuest=t.q;setTimeout(()=>{sfx('victory');showFinalCelebration()},120)}
 }
 function zombieBody(){return `<div class="card center"><div class="zombie-alert zombie-wave">🧟 🧟 🧟</div><h2 class="danger">ZOMBIES ATTACK!</h2><p>De kommer! Ta era snöbollar och besegra 5 zombies genom att pricka målen.</p><p class="wait">🔊 Lyssna efter zombie-ljudet!</p></div>`}
 function choiceBody(){return `<div class="card"><h3>⚔️ Crafting</h3><button class="choice" onclick="answer(0,this)">A) 3 Diamond + 1 Stick</button><button class="choice" onclick="answer(1,this)">B) 2 Diamond + 2 Stick</button><button class="choice" onclick="answer(2,this)">C) 4 Diamond + 1 Stick</button><p id="choiceMsg"></p></div>`}
@@ -125,7 +126,7 @@ let placedCells=Array(20).fill(null);
 function dropBlock(e,cell){e.preventDefault();const msg=document.getElementById('portalMsg');if(selectedBlock===null){if(placedCells[cell]!==null){const old=placedCells[cell];placedCells[cell]=null;renderPortalOnly();const m=document.getElementById('portalMsg');if(m)m.textContent='Obsidian tillbaka i lagret.'}return}if(placedCells[cell]!==null){if(msg)msg.innerHTML='<span class="danger">❌ Rutan är redan upptagen. Tryck på den för att ta bort blocket.</span>';return}if(placedCells.filter(v=>v!==null).length>=10){if(msg)msg.innerHTML='<span class="danger">❌ Alla 10 Obsidian Blocks används.</span>';return}placedCells[cell]=selectedBlock;selectedBlock=null;clearSelection();sfx('click');renderPortalOnly()}
 function checkPortal(){const msg=document.getElementById('portalMsg');const placed=placedCells.map((v,i)=>v!==null?i:null).filter(v=>v!==null);const right=placed.length===10&&placed.every(v=>frame.includes(v));if(!right){if(msg)msg.innerHTML='<span class="danger fx-shake">❌ Inte rätt ännu! Kontrollera ramen och försök igen.</span>';sfx('bad');animateMsg('portalMsg','flash-bad');return}if(msg)msg.innerHTML='<span class="ok fx-pop">🔥 NETHER PORTAL ACTIVATED!</span>';sfx('portal');sfx('portalWhoosh');const grid=document.querySelector('.portal-grid');if(grid)grid.classList.add('portal-active');document.querySelector('.panel')?.classList.add('screen-good');setTimeout(()=>document.querySelector('.panel')?.classList.remove('screen-good'),1200);setTimeout(()=>send('portal_done'),1100)}
 function clearSelection(){document.querySelectorAll('.obsidian').forEach(b=>b.style.outline='none')}
-function renderPortalOnly(){const t=game.teams[role];if(t.q!==7||t.done)return;const wrap=document.querySelector('.portal-wrap');if(!wrap)return;wrap.outerHTML=portalBody();}
+function renderPortalOnly(){const t=game.teams[role];if(t.q!==8||t.done)return;const wrap=document.querySelector('.portal-wrap');if(!wrap)return;wrap.outerHTML=portalBody();}
 function finalBody(){return `<div class="final-quest"><div class="final-particle"></div><div class="final-chest">🎁</div><div class="final-title">SKATTJAKTEN KLAR!</div><div class="final-sub">💎 NI HITTADE DIAMONDSKATTEN! 💎</div><p>Alla quests är klara. Ni är riktiga Minecraft-äventyrare!</p></div>`}
 function showFinalCelebration(){const o=document.createElement('div');o.className='final-overlay';o.innerHTML='<div class="final-overlay-card"><div class="final-overlay-chest">🎁💎</div><div class="final-overlay-title">SKATTJAKTEN KLAR!</div><div class="final-overlay-sub">✨ QUEST COMPLETE! ✨</div></div>';document.body.appendChild(o);setTimeout(()=>o.remove(),3900)}
 function teamworkBody(t){const frag=t.codeFragment||'';return `<div class="card"><h3>🤝 Teamwork</h3><p>Er kodbit är:</p><div class="code-fragment">${frag}</div><p>Prata med det andra laget. Slå ihop era kodbitar och skriv in den gemensamma koden.</p><input id="finalCode" class="code-input" maxlength="20" placeholder="GEMENSAM KOD"><br><button onclick="checkFinalCode()">🔐 LÅS UPP</button><p id="codeMsg"></p></div>`}
