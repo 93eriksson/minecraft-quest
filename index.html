@@ -184,14 +184,15 @@ function showUnlock(){const o=document.createElement('div');o.className='unlock-
 function focusCode(){const x=document.getElementById('finalCode');if(x)x.focus()}
 function renderGM(){
  const c=game.teams.creeper,d=game.teams.diamond;
- app.innerHTML=`<div class='panel'><h1>🧙 GAME MASTER DASHBOARD</h1><p>Spelkod: <b>${code}</b></p><div class='grid'>${teamCard('creeper','🟩 Team Creeper',c)}${teamCard('diamond','💎 Team Diamond',d)}</div><div class='card'><h2>🧭 Alla quests</h2><p>Välj ett quest för att flytta båda lagen dit. Det valda questets tidigare status återställs.</p><div class='quest-dashboard'>${quests.map((q,i)=>questJumpCard(i,c,d)).join('')}</div></div><div class='card'><h2>🔓 Nästa quest</h2><p>${c.approved&&d.approved?'Båda lagen är godkända!':'Båda lagen måste vara klara och godkända.'}</p><button ${c.approved&&d.approved?'':'disabled'} onclick='send("unlock_both")'>🔓 LÅS UPP NÄSTA QUEST FÖR BÅDA</button><button onclick='send("reset")'>↻ STARTA OM SPELET</button></div></div>`;
+ app.innerHTML=`<div class='panel'><h1>🧙 GAME MASTER DASHBOARD</h1><p>Spelkod: <b>${code}</b></p><div class='grid'>${teamCard('creeper','🟩 Team Creeper',c)}${teamCard('diamond','💎 Team Diamond',d)}</div><div class='card'><h2>🧭 Alla quests</h2><p>Godkänn lagen var för sig ovan. Ett godkänt lag går direkt vidare; det andra kan fortsätta sitt quest.</p><p>Välj ett quest nedan för att flytta båda lagen dit. Questets gamla status återställs.</p><div class='quest-dashboard'>${quests.map((q,i)=>questJumpCard(i,c,d)).join('')}</div><button onclick='send("reset")'>↻ STARTA OM SPELET</button></div></div>`;
 }
 function questJumpCard(i,c,d){
  const current=c.q===i&&d.q===i;
- const state=t=>t.q!==i?'Inte aktiv':t.approved?'Godkänd':t.done?'Klar – väntar på GM':'Pågår';
+ const state=t=>t.q===i?(t.approved?'Godkänd':t.done?'Klar – väntar på GM':'Pågår'):(t.completed||[]).includes(i)?'Godkänd':'Inte aktiv';
  return `<div class='quest-option ${current?'current':''}'><h3>Quest ${i+1}: ${quests[i].icon} ${quests[i].title}</h3><p>🟩 Creeper: ${state(c)}<br>💎 Diamond: ${state(d)}</p><button ${current?'disabled':''} onclick='jumpToQuest(${i})'>${current?'AKTUELLT':'HOPPA HIT FÖR BÅDA LAGEN'}</button></div>`;
 }
-function jumpToQuest(i){send('jump_to_quest',{quest:i})}function teamCard(key,name,t){const q=quests[t.q];return `<div class="card ${key}"><h2>${name}</h2><h3>Quest ${t.q+1}: ${q.icon} ${q.title}</h3><p>${t.approved?'<span class="ok">✓ GODKÄND</span>':t.done?'<span class="wait">✓ KLAR – redo</span>':'⏳ Pågår'}</p><button ${t.done&&!t.approved?'':'disabled'} onclick="send('approve',{team:'${key}'})">✅ GODKÄNN</button></div>`}
+function jumpToQuest(i){send('jump_to_quest',{quest:i})}
+function teamCard(key,name,t){const q=quests[t.q],label=t.q===quests.length-1?'🏁 GODKÄNN KLART':'✅ GODKÄNN & NÄSTA QUEST';return `<div class="card ${key}"><h2>${name}</h2><h3>Quest ${t.q+1}: ${q.icon} ${q.title}</h3><p>${t.approved?'<span class="ok">✓ GODKÄND</span>':t.done?'<span class="wait">✓ KLAR – redo</span>':'⏳ Pågår'}</p><button ${t.done&&!t.approved?'':'disabled'} onclick="send('approve',{team:'${key}'})">${label}</button></div>}
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(b&&!b.disabled){sfx('click');b.classList.remove('button-pop');void b.offsetWidth;b.classList.add('button-pop')}});
 login();
 </script>
