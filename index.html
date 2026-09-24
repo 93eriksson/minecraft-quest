@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Minecraft Quest – digitala äventyr för barnkalas</title>
-<meta name="description" content="Gör barnkalaset till ett äventyr. Spela Block Quest direkt i webbläsaren på mobil och surfplatta.">
+<title>Interaktiva gruppspel | Samla alla i spelet</title>
+<meta name="description" content="Quiz, quests och gruppspel för barnkalas, kompisgäng, konferenser och andra tillfällen.">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#101510;color:#fff;font-family:Arial,sans-serif;font-size:18px}main{max-width:950px;margin:auto;padding:20px}.panel{background:#222;border:4px solid #555;padding:22px;box-shadow:8px 8px #000}h1,h2,h3{text-shadow:3px 3px #000}h1{font-size:clamp(30px,5vw,50px)}h2{font-size:clamp(25px,4.2vw,36px)}h3{font-size:clamp(22px,3.5vw,30px)}p{font-size:1em;line-height:1.35}button,input,select{font-size:19px;padding:13px;margin:7px;border:3px solid #111;font-weight:800}button{background:#65ad42;color:#fff;cursor:pointer;box-shadow:4px 4px #000}button:disabled{opacity:.45;cursor:not-allowed}input{width:min(360px,90%)}select{max-width:360px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;background:#292929;border:3px solid #666;margin:10px 0}.creeper{border-color:#55a83b}.diamond{border-color:#52bde8}.ok{color:#8cff72}.wait{color:#ffd966}.danger{color:#ff6767}.big{font-size:48px}.xp{height:14px;background:#111;margin:10px 0}.xp i{display:block;height:100%;background:#62d53f}.center{text-align:center}.choice{display:block;font-size:20px;min-height:58px;width:100%;text-align:left;background:#4b7f38}.choice.correct{background:#24943d}.choice.wrong{background:#9b3333}.timer{font-size:86px;text-align:center;font-weight:900;text-shadow:5px 5px #000}.timer.warning{color:#ff5555}.delay{font-size:48px;text-align:center;color:#ffd966;font-weight:900}.quest-dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}.quest-option{padding:14px;background:#292929;border:3px solid #666;margin:0}.quest-option.current{border-color:#8cff72;box-shadow:0 0 12px rgba(140,255,114,.25)}.quest-option h3{margin:4px 0;font-size:clamp(21px,3vw,28px)}.quest-option p{margin:8px 0;font-size:.92em}.quest-option button{width:100%;font-size:17px}.crafting-wrap{text-align:center}.crafting-grid{display:grid;grid-template-columns:repeat(3,minmax(64px,92px));gap:8px;justify-content:center;margin:16px auto}.crafting-slot{width:100%;aspect-ratio:1;padding:4px;margin:0;background:linear-gradient(135deg,#8a5b2c,#503014);border:4px solid #2d1c10;box-shadow:inset 3px 3px rgba(255,255,255,.18),4px 4px #000;font-size:42px;touch-action:manipulation}.crafting-slot.filled{background:linear-gradient(135deg,#ad773d,#75451d)}.crafting-pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px auto;max-width:620px}.crafting-piece{min-width:100px;min-height:72px;margin:0;padding:7px;background:linear-gradient(135deg,#6d4a2a,#3f2a18);border:3px solid #21150d;touch-action:manipulation}.crafting-piece span{display:block;font-size:15px}.crafting-piece.selected{outline:4px solid #fff}.crafting-piece.used{opacity:.28}.portal-wrap{text-align:center}.portal-grid{display:grid;grid-template-columns:repeat(4,minmax(55px,80px));grid-template-rows:repeat(5,minmax(55px,80px));gap:4px;justify-content:center;margin:18px auto}.portal-slot{border:4px solid #777;background:#666;min-height:55px;cursor:pointer;touch-action:manipulation;box-shadow:inset 3px 3px rgba(255,255,255,.10),inset -4px -4px rgba(0,0,0,.28);position:relative;image-rendering:pixelated}.portal-slot:before{content:'';position:absolute;inset:5px;background:linear-gradient(135deg,rgba(255,255,255,.07) 0 12%,transparent 12% 25%,rgba(0,0,0,.08) 25% 38%,transparent 38% 55%,rgba(255,255,255,.05) 55% 70%,transparent 70%);opacity:.9;pointer-events:none}.portal-slot.inner{background:#666;border-color:#777}.portal-slot:hover{filter:brightness(1.25)}.portal-slot.filled{background:linear-gradient(135deg,#050505 0 18%,#171017 18% 38%,#030303 38% 62%,#161016 62% 82%,#050505 82%);border:4px solid #111;box-shadow:inset 4px 4px rgba(255,255,255,.04),inset -5px -5px rgba(0,0,0,.55),0 0 5px #000}.portal-slot.inner.filled{background:radial-gradient(circle at 50% 50%,#c56bff 0 12%,#7b2cbf 13% 27%,#24102f 28% 48%,#09040d 49% 100%);border-color:#8f49b8;box-shadow:inset 0 0 18px #000,0 0 10px #7b2cbf}.obsidian-pool{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:15px auto;max-width:620px}.obsidian{width:96px;height:64px;padding:8px;margin:0;background:linear-gradient(135deg,#101010 0 20%,#252525 20% 28%,#080808 28% 48%,#1e1e1e 48% 64%,#050505 64%);border:4px solid #333;box-shadow:inset 0 0 10px #000,4px 4px #000;touch-action:none;user-select:none}.obsidian.used{opacity:.25}.portal-actions{margin:12px auto}.portal-check{font-size:25px;padding:15px 28px;background:#4b9f35}.code-fragment{font-size:34px;letter-spacing:4px;text-align:center;background:#111;border:3px solid #777;padding:15px;margin:15px auto;max-width:430px}.code-input{text-align:center;font-size:28px;letter-spacing:4px;text-transform:uppercase;max-width:430px}
 .fx-pop{animation:fxPop .45s ease}.fx-shake{animation:fxShake .42s ease}.fx-pulse{animation:fxPulse 1s ease infinite}.portal-active{animation:portalActive 1.2s ease-in-out infinite}.flash-good{animation:flashGood .65s ease}.flash-bad{animation:flashBad .45s ease}.zombie-alert{font-size:64px;text-align:center;animation:zombieIn .8s ease}.explosion-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#fff 0%,#ffd54a 14%,#ff7a00 35%,#d71900 58%,rgba(0,0,0,.92) 100%);animation:boom 2.6s ease forwards;pointer-events:none}.explosion-core{font-size:clamp(100px,24vw,260px);font-weight:900;text-shadow:0 0 25px #fff,8px 8px 0 #7a1600;animation:boomText 2.6s ease forwards}.fuse{font-size:42px;color:#ffd966;text-align:center;font-weight:900;animation:fusePulse .7s infinite}.zombie-wave{animation:zombieWave 1.2s ease infinite}@keyframes zombieIn{0%{transform:scale(.2) translateY(40px);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1)}}@keyframes zombieWave{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-8px) rotate(-3deg)}75%{transform:translateX(8px) rotate(3deg)}}@keyframes fusePulse{0%,100%{text-shadow:0 0 4px #ff9d00}50%{text-shadow:0 0 22px #ff4d00}}@keyframes boom{0%{opacity:0;transform:scale(.15)}8%{opacity:1;transform:scale(1.08)}20%{transform:scale(1)}78%{opacity:1}100%{opacity:0;transform:scale(1.12)}}@keyframes boomText{0%{transform:scale(.1) rotate(-18deg);opacity:0}10%{transform:scale(1.2) rotate(8deg);opacity:1}25%{transform:scale(1) rotate(-3deg)}75%{transform:scale(1.05)}100%{transform:scale(1.35);opacity:0}}@keyframes fxPop{0%{transform:scale(.75);opacity:.3}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}@keyframes fxShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(5px)}}@keyframes fxPulse{0%,100%{box-shadow:0 0 0 #7b2cbf}50%{box-shadow:0 0 24px #7b2cbf}}@keyframes portalActive{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8) saturate(1.3)}}@keyframes flashGood{0%{filter:brightness(1)}40%{filter:brightness(1.9)}100%{filter:brightness(1)}}@keyframes flashBad{0%,100%{filter:brightness(1)}50%{filter:brightness(.55)}}@keyframes buttonPop{0%{transform:scale(1)}50%{transform:scale(.94)}100%{transform:scale(1)}}@keyframes xpRise{0%{transform:translateY(10px) scale(.7);opacity:0}30%{opacity:1}100%{transform:translateY(-34px) scale(1.15);opacity:0}}@keyframes screenGood{0%,100%{filter:brightness(1)}30%{filter:brightness(1.8)}60%{filter:brightness(1.15)}}@keyframes screenBad{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}@keyframes portalInner{0%,100%{filter:brightness(.85)}50%{filter:brightness(1.7)}}@keyframes unlockFade{0%{opacity:0}15%{opacity:1}70%{opacity:1}100%{opacity:0}}@keyframes unlockPop{0%{transform:scale(.2);opacity:0}30%{transform:scale(1.15);opacity:1}55%{transform:scale(1)}100%{transform:scale(1.08);opacity:0}}
@@ -134,21 +134,83 @@ body.in-game #game-view{display:block}
 @media(max-width:450px){.site-shell{width:calc(100% - 30px)}.site-brand-mark{width:38px;height:38px}.site-brand-name{font-size:13px}.site-brand-note{font-size:8px}.site-hero-actions{align-items:flex-start;flex-direction:column;gap:17px}.site-hero-proof{gap:12px}.site-hero-art{height:345px;padding:12px;border-radius:23px}.site-world{height:275px}.site-hero-character{height:124px;width:88px;font-size:54px;bottom:42px}.site-block-one{left:25px}.site-block-two{right:27px}.site-quest-tag{right:12px;top:104px}.site-art-caption{left:14px;bottom:13px}.site-section-heading h2,.site-parent-copy h2{letter-spacing:-1.2px}.site-parent-points{grid-template-columns:1fr 1fr;gap:9px}.site-parent-point{padding:15px}.game-toolbar{gap:9px;padding:8px}.game-toolbar-brand{font-size:10px}.game-toolbar-brand span{font-size:9px}#game-view button.game-home-button{padding:9px 10px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){#site-home *,#site-home *:before,#site-home *:after{scroll-behavior:auto!important;transition:none!important}}
 
+
+.site-event-world{background:radial-gradient(circle at 83% 20%,rgba(255,255,255,.72) 0 8%,transparent 8.5%),linear-gradient(140deg,#dceee4 0%,#d4e7dd 55%,#a8cdb5 100%)}
+.site-event-world:before{height:110px;background:linear-gradient(180deg,rgba(40,115,80,.02),rgba(40,115,80,.2));clip-path:ellipse(76% 48% at 50% 100%)}
+.site-event-board{position:absolute;z-index:3;left:22px;top:83px;width:59%;padding:14px;border:1px solid rgba(35,70,50,.08);border-radius:16px;background:#fff;box-shadow:0 16px 35px rgba(28,69,45,.16);transform:rotate(-2deg)}
+.site-event-board-top{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#79877e;font-size:9px;font-weight:900;letter-spacing:.8px}
+.site-live-pill{display:inline-flex;align-items:center;gap:5px;color:#287350}
+.site-live-pill:before{content:"";width:7px;height:7px;border-radius:50%;background:#57b66b;box-shadow:0 0 0 4px rgba(87,182,107,.13)}
+.site-event-board h3{margin:13px 0 11px;color:#203329;font-size:17px;line-height:1.15;text-shadow:none}
+.site-event-options{display:grid;gap:6px}
+.site-event-option{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:8px;background:#f2f6ef;color:#43544a;font-size:9px;font-weight:800}
+.site-event-option:nth-child(2){background:#eff3ff}
+.site-event-option:nth-child(3){background:#fff5e8}
+.site-event-option i{width:8px;height:8px;border-radius:3px;background:#64a878}
+.site-event-option:nth-child(2) i{background:#8297dc}
+.site-event-option:nth-child(3) i{background:#e6aa55}
+.site-join-card{position:absolute;z-index:4;right:17px;top:139px;width:28%;padding:13px 10px;border:1px solid rgba(35,70,50,.08);border-radius:14px;background:#fff;box-shadow:0 12px 28px rgba(28,69,45,.14);text-align:center;transform:rotate(3deg)}
+.site-join-card span{display:block;color:#7b887f;font-size:8px;font-weight:900;letter-spacing:.8px}
+.site-join-card strong{display:block;margin-top:7px;color:#287350;font-size:20px;letter-spacing:2px}
+.site-join-card small{display:block;margin-top:5px;color:#77847b;font-size:8px}
+.site-event-art-caption{left:21px;bottom:14px}
+.site-adventure-art.quiz{background:linear-gradient(145deg,#e5eafb,#cbd6f4)}
+.site-adventure-art.quest{background:linear-gradient(145deg,#e8f0d8,#caddbe)}
+.site-adventure-art.challenge{background:linear-gradient(145deg,#f8ead5,#f0d7b2)}
+.site-event-close{padding:60px 0;background:#1d3027;color:#fff;text-align:center}
+.site-event-close h2{margin:0;color:#fff;font-size:clamp(30px,5vw,48px);text-shadow:none}
+.site-event-close p{max-width:580px;margin:15px auto 24px;color:#d1ded4;font-size:15px}
+#site-home .site-event-close a{display:inline-flex;align-items:center;gap:12px;padding:14px 20px;border-radius:999px;background:#80b962;color:#fff;font-size:13px;font-weight:850}
+@media(max-width:760px){.site-event-board{left:15px;top:82px;width:61%;padding:12px}.site-join-card{right:12px;top:144px;width:28%}.site-event-art-caption{left:14px;bottom:12px}}
+@media(max-width:450px){.site-event-board{left:10px;top:85px;width:61%;padding:10px}.site-event-board h3{font-size:14px;margin:10px 0 8px}.site-event-option{padding:6px;font-size:8px}.site-join-card{right:9px;top:143px;width:29%;padding:11px 7px}.site-join-card strong{font-size:17px}.site-event-art-caption{left:10px;bottom:10px}}
+
+.language-switch{display:flex;align-items:center;gap:5px;padding:5px;border:1px solid #e1e6dc;border-radius:999px;background:#fff}
+#site-home button.language-button{display:grid;place-items:center;width:38px;height:38px;margin:0;padding:0;border:2px solid transparent;border-radius:50%;background:transparent;box-shadow:none;font-size:20px;line-height:1;transition:background .16s ease,transform .16s ease,border-color .16s ease}
+#site-home button.language-button:hover{background:#f1f5ed;transform:translateY(-1px)}
+#site-home button.language-button[aria-pressed="true"]{border-color:#287350;background:#e8f2e2}
+#site-home button.language-button:focus-visible{outline:3px solid #e3a63f;outline-offset:2px}
+.site-nav-right{display:flex;align-items:center;gap:15px}
+.site-audience-section{padding:94px 0;background:#fffaf0}
+.site-audience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}
+.site-audience-card{position:relative;display:flex;flex-direction:column;min-height:390px;overflow:hidden;padding:27px;border:1px solid transparent;border-radius:24px;box-shadow:0 16px 36px rgba(28,43,34,.08)}
+.site-audience-card:after{content:"";position:absolute;width:180px;height:180px;right:-66px;top:-72px;border:1px solid currentColor;border-radius:50%;opacity:.16;box-shadow:0 0 0 22px currentColor,0 0 0 46px currentColor;pointer-events:none}
+.site-audience-card.kids{color:#78351b;background:linear-gradient(145deg,#fff0a8,#ffca9e 58%,#ffd9c4);border-color:#f6d777}
+.site-audience-card.young{color:#39266d;background:linear-gradient(145deg,#e8dcff,#d9c9ff 55%,#c9f4d8);border-color:#d5c5f4}
+.site-audience-card.adults{color:#163d4a;background:linear-gradient(145deg,#d8f0e9,#c8e6e9 58%,#f5e6bf);border-color:#c7dfd9}
+.site-audience-icon{display:grid;place-items:center;width:64px;height:64px;margin:2px 0 24px;border-radius:20px;background:rgba(255,255,255,.7);font-size:34px;box-shadow:0 8px 18px rgba(34,48,40,.08)}
+.site-audience-age{margin:0 0 9px!important;font-size:11px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;opacity:.75}
+.site-audience-card h3{margin:0;font-size:clamp(24px,2.5vw,31px);line-height:1.12;letter-spacing:-.8px}
+.site-audience-card p:not(.site-audience-age){margin:14px 0 20px;color:inherit;font-size:14px;opacity:.86}
+.site-audience-tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 25px}
+.site-audience-tags span{padding:7px 10px;border:1px solid rgba(38,47,43,.12);border-radius:999px;background:rgba(255,255,255,.55);font-size:10px;font-weight:800}
+.site-audience-card .site-audience-cta{margin-top:auto;align-self:flex-start;padding:10px 14px;border:0;border-radius:999px;background:rgba(255,255,255,.84);color:inherit;font-size:12px;font-weight:850}
+.site-audience-card .site-audience-cta:hover{background:#fff;transform:translateY(-1px)}
+.site-coming-label{display:inline-flex;align-self:flex-start;margin-top:auto;padding:8px 11px;border:1px solid rgba(38,47,43,.12);border-radius:999px;background:rgba(255,255,255,.58);font-size:10px;font-weight:900;letter-spacing:.7px}
+@media(max-width:760px){.site-nav-right{gap:8px}.site-nav-right .site-menu-toggle{display:block}.site-audience-section{padding:70px 0}.site-audience-grid{grid-template-columns:1fr;gap:13px;margin-top:27px}.site-audience-card{min-height:0;padding:24px}.site-audience-card .site-audience-cta,.site-coming-label{margin-top:5px}}
+@media(max-width:450px){.language-switch{gap:1px;padding:3px}.site-nav-right{gap:6px}#site-home button.language-button{width:33px;height:33px;font-size:18px}.site-brand-note{letter-spacing:1px}}
+
 </style>
 </head>
 <body>
 <div id="site-home">
  <header class="site-header">
   <div class="site-shell site-nav">
-   <a class="site-brand" href="#top" aria-label="Minecraft Quest – startsidan">
-    <span class="site-brand-mark" aria-hidden="true"></span>
-    <span><span class="site-brand-name">MINECRAFT QUEST</span><span class="site-brand-note">ÄVENTYR FÖR BARNKALAS</span></span>
+   <a class="site-brand" href="#top" aria-label="Till sidans början">
+    <span><span class="site-brand-name" data-i18n="brand">INTERAKTIVA GRUPPSPEL</span><span class="site-brand-note" data-i18n="brandNote">QUIZ · QUEST · LAGLEKAR</span></span>
    </a>
-   <button class="site-menu-toggle" type="button" aria-label="Öppna meny" aria-expanded="false" onclick="toggleSiteMenu(this)">Meny</button>
+   <div class="site-nav-right">
+    <div class="language-switch" id="language-switch" role="group" aria-label="Välj språk">
+     <button class="language-button" type="button" data-language="sv" aria-label="Svenska" aria-pressed="true" title="Svenska">🇸🇪</button>
+     <button class="language-button" type="button" data-language="en" aria-label="English" aria-pressed="false" title="English">🇬🇧</button>
+     <button class="language-button" type="button" data-language="de" aria-label="Deutsch" aria-pressed="false" title="Deutsch">🇩🇪</button>
+    </div>
+    <button class="site-menu-toggle" type="button" aria-label="Öppna meny" aria-expanded="false" onclick="toggleSiteMenu(this)">Meny</button>
+   </div>
    <nav class="site-links" aria-label="Huvudmeny">
-    <a href="#sa-fungerar">Så fungerar det</a>
-    <a href="#aventyr">Äventyr</a>
-    <a class="site-nav-cta" href="#aventyr">Välj äventyr</a>
+    <a href="#how-it-works" data-i18n="navHow">Så fungerar det</a>
+    <a href="#audiences" data-i18n="navFor">För vem?</a>
+    <a href="#experiences" data-i18n="navExperiences">Aktiviteter</a>
+    <a class="site-nav-cta" href="#events" data-i18n="navEvents">För alla tillfällen</a>
    </nav>
   </div>
  </header>
@@ -156,86 +218,101 @@ body.in-game #game-view{display:block}
   <section class="site-hero">
    <div class="site-shell site-hero-layout">
     <div>
-     <p class="site-eyebrow">DIGITALA ÄVENTYR FÖR BARNKALAS</p>
-     <h1>Gör barnkalaset till ett <em>äventyr.</em></h1>
-     <p class="site-hero-copy">Färdiga uppdrag, lagarbete och en skatt att hitta. Allt startar direkt i webbläsaren – på mobilen eller surfplattan.</p>
+     <p class="site-eyebrow" data-i18n="heroEyebrow">QUIZ · QUESTS · GRUPPSPEL</p>
+     <h1 data-i18n="heroTitle">Samla alla i <em>spelet.</em></h1>
+     <p class="site-hero-copy" data-i18n="heroCopy">Från skattjakt på barnkalaset till quiz med kompisarna eller lagutmaningar på jobbet — välj ett spel som får alla att vara med.</p>
      <div class="site-hero-actions">
-      <a class="site-button-primary" href="#aventyr">Utforska äventyr <span aria-hidden="true">→</span></a>
-      <a class="site-button-link" href="#sa-fungerar">Se hur det fungerar</a>
+      <a class="site-button-primary" href="#audiences"><span data-i18n="heroCta">Hitta rätt aktivitet</span><span aria-hidden="true">→</span></a>
+      <a class="site-button-link" href="#how-it-works" data-i18n="heroLink">Så går det till</a>
      </div>
-     <div class="site-hero-proof"><span><i class="site-proof-dot"></i> Inget att installera</span><span>◷&nbsp; Lätt att komma igång</span></div>
+     <div class="site-hero-proof"><span><i class="site-proof-dot"></i><span data-i18n="proofOne">Ingen app behövs</span></span><span data-i18n="proofTwo">◷&nbsp; Spela på skärmarna ni redan har</span></div>
     </div>
-    <div class="site-hero-art" aria-label="Illustration av ett fantasifullt speläventyr">
-     <div class="site-art-top"><span>ETT ÄVENTYR VÄNTAR</span><span class="site-art-ready">SPELKLART</span></div>
-     <div class="site-world">
-      <span class="site-world-title">VÄLKOMMEN TILL <b>BLOCK QUEST</b></span>
-      <span class="site-sun" aria-hidden="true"></span><span class="site-cloud" aria-hidden="true"></span>
-      <span class="site-pixel-block site-block-one" aria-hidden="true">🌿</span>
-      <span class="site-pixel-block site-block-two" aria-hidden="true">💎</span>
-      <span class="site-hero-character" aria-hidden="true">🧭</span>
-      <span class="site-quest-tag">UPPDRAG 01<strong>Resursjakten</strong></span>
-      <span class="site-art-caption">✨ <span><b>Samla laget.</b> Starta äventyret.</span></span>
+    <div class="site-hero-art" aria-label="Illustration av ett interaktivt gruppspel">
+     <div class="site-art-top"><span data-i18n="artTop">ETT GÄNG. MASSOR AV SÄTT ATT SPELA.</span><span class="site-art-ready" data-i18n="artReady">REDO ATT SPELA</span></div>
+     <div class="site-world site-event-world">
+      <span class="site-world-title" data-i18n="artTitle">ALLA MED <b>I SPELET</b></span>
+      <div class="site-event-board">
+       <div class="site-event-board-top"><span data-i18n="artQuiz">SNABB QUIZRUNDA</span><span class="site-live-pill" data-i18n="artLive">LIVE</span></div>
+       <h3 data-i18n="artQuestion">Vilket lag tar ledningen?</h3>
+       <div class="site-event-options"><div class="site-event-option"><i></i><span data-i18n="teamOne">Lag Nord</span></div><div class="site-event-option"><i></i><span data-i18n="teamTwo">Lag Syd</span></div><div class="site-event-option"><i></i><span data-i18n="everyonePlays">Alla spelar</span></div></div>
+      </div>
+      <div class="site-join-card"><span data-i18n="joinCode">EXEMPELKOD</span><strong>482 619</strong><small data-i18n="joinScreen">Anslut från valfri skärm</small></div>
+      <span class="site-art-caption site-event-art-caption">✨ <span><b data-i18n="artCaptionBold">En gemensam stund.</b> <span data-i18n="artCaption">Alla är med.</span></span></span>
      </div>
     </div>
    </div>
   </section>
-
-  <section class="site-section" id="sa-fungerar">
+  <section class="site-section" id="how-it-works">
    <div class="site-shell">
     <div class="site-section-heading">
-     <p class="site-eyebrow">ENKELT ATT KOMMA IGÅNG</p>
-     <h2>Från kalasplan till quest på några minuter.</h2>
-     <p>Välj ett äventyr, samla barnen runt en skärm och låt uppdragen ta vid.</p>
+     <p class="site-eyebrow" data-i18n="howEyebrow">ENKELT ATT HÅLLA I</p>
+     <h2 data-i18n="howTitle">Från ett rum fullt av folk till ett spel alla kan vara med i.</h2>
+     <p data-i18n="howCopy">Välj en aktivitet, dela en kod och låt gruppen spela tillsammans.</p>
     </div>
     <div class="site-step-grid">
-     <article class="site-step-card"><div class="site-step-number"><span>01 / VÄLJ</span><span>01</span></div><span class="site-step-icon" aria-hidden="true">🧭</span><h3>Välj ett äventyr</h3><p>Börja med Block Quest – en färdig skattjakt med uppdrag och en gemensam final.</p></article>
-     <article class="site-step-card"><div class="site-step-number"><span>02 / SAMLAS</span><span>02</span></div><span class="site-step-icon" aria-hidden="true">📱</span><h3>Anslut era skärmar</h3><p>Starta spelet och låt Game Master och lagen gå med i samma äventyrskod.</p></article>
-     <article class="site-step-card"><div class="site-step-number"><span>03 / SPELA</span><span>03</span></div><span class="site-step-icon" aria-hidden="true">🏆</span><h3>Lös uppdragen ihop</h3><p>Hitta ledtrådar, klara utmaningar och samarbeta hela vägen fram till skatten.</p></article>
+     <article class="site-step-card"><div class="site-step-number"><span data-i18n="stepOneLabel">01 / VÄLJ</span><span>01</span></div><span class="site-step-icon" aria-hidden="true">🧭</span><h3 data-i18n="stepOneTitle">Välj upplägg</h3><p data-i18n="stepOneCopy">Hitta ett quiz, en berättelsedriven quest eller en snabb lagutmaning.</p></article>
+     <article class="site-step-card"><div class="site-step-number"><span data-i18n="stepTwoLabel">02 / ANSLUT</span><span>02</span></div><span class="site-step-icon" aria-hidden="true">📲</span><h3 data-i18n="stepTwoTitle">Samla alla</h3><p data-i18n="stepTwoCopy">Spelarna ansluter i webbläsaren med en kod och använder mobilerna eller surfplattorna som redan finns.</p></article>
+     <article class="site-step-card"><div class="site-step-number"><span data-i18n="stepThreeLabel">03 / SPELA</span><span>03</span></div><span class="site-step-icon" aria-hidden="true">🏆</span><h3 data-i18n="stepThreeTitle">Dra igång spelet</h3><p data-i18n="stepThreeCopy">Håll i tempot, följ lagens framsteg och led gruppen mot en gemensam final.</p></article>
     </div>
    </div>
   </section>
-
-  <section class="site-section site-adventures" id="aventyr">
+  <section class="site-audience-section" id="audiences">
    <div class="site-shell">
     <div class="site-section-heading">
-     <p class="site-eyebrow">VÄLJ ERT ÄVENTYR</p>
-     <h2>Vilken värld vill ni utforska?</h2>
-     <p>Starta med ett färdigt äventyr. Fler världar är på väg.</p>
+     <p class="site-eyebrow" data-i18n="audienceEyebrow">SPELA PÅ ERT SÄTT</p>
+     <h2 data-i18n="audienceTitle">Olika sällskap. Rätt sorts kul.</h2>
+     <p data-i18n="audienceCopy">Välj en stämning som passar dem som ska spela.</p>
+    </div>
+    <div class="site-audience-grid">
+     <article class="site-audience-card kids"><span class="site-audience-icon" aria-hidden="true">🎈</span><p class="site-audience-age" data-i18n="kidsAge">BARN & FAMILJ</p><h3 data-i18n="kidsTitle">Ett kalas fullt av upptäckter</h3><p data-i18n="kidsCopy">Skattjakter, färgglada uppdrag och kluriga pussel där barnen samarbetar, rör på sig och firar varje liten seger.</p><div class="site-audience-tags"><span data-i18n="kidsTagOne">Skattjakt</span><span data-i18n="kidsTagTwo">Samarbete</span><span data-i18n="kidsTagThree">Kalasfavorit</span></div><button class="site-audience-cta" type="button" onclick="openQuestGame()"><span data-i18n="kidsCta">Spela Block Quest</span> →</button></article>
+     <article class="site-audience-card young"><span class="site-audience-icon" aria-hidden="true">🎧</span><p class="site-audience-age" data-i18n="youngAge">UNGA VUXNA · 18–25</p><h3 data-i18n="youngTitle">För kompisgäng med tävlingsnerver</h3><p data-i18n="youngCopy">Snabba musik- och popkulturquiz, oväntade dueller och lagutmaningar för studentliv, förfest och sena spelkvällar.</p><div class="site-audience-tags"><span data-i18n="youngTagOne">Musikquiz</span><span data-i18n="youngTagTwo">Dueller</span><span data-i18n="youngTagThree">Kompisgäng</span></div><span class="site-coming-label" data-i18n="comingSoon">Fler spel på väg</span></article>
+     <article class="site-audience-card adults"><span class="site-audience-icon" aria-hidden="true">🥂</span><p class="site-audience-age" data-i18n="adultAge">VUXNA · 25–60</p><h3 data-i18n="adultTitle">Gör mötet till dagens höjdpunkt</h3><p data-i18n="adultCopy">Genomtänkta quiz, isbrytare och lagutmaningar för kickoffen, konferensen eller middagen där folk gärna lär känna varandra.</p><div class="site-audience-tags"><span data-i18n="adultTagOne">Kickoff</span><span data-i18n="adultTagTwo">Konferens</span><span data-i18n="adultTagThree">Middag</span></div><span class="site-coming-label" data-i18n="comingSoon">Fler spel på väg</span></article>
+    </div>
+   </div>
+  </section>
+  <section class="site-section site-adventures" id="experiences">
+   <div class="site-shell">
+    <div class="site-section-heading">
+     <p class="site-eyebrow" data-i18n="experienceEyebrow">VÄLJ HUR NI VILL SPELA</p>
+     <h2 data-i18n="experienceTitle">En plattform. Flera sätt att mötas.</h2>
+     <p data-i18n="experienceCopy">Börja med Block Quest. Live Quiz och fler gruppspel är under utveckling.</p>
     </div>
     <div class="site-adventure-grid">
+     <article class="site-adventure-card is-upcoming">
+      <div class="site-adventure-art quiz"><span class="site-adventure-label soon" data-i18n="comingSoon">Fler spel på väg</span><span class="site-adventure-icon" aria-hidden="true">🎤</span></div>
+      <div class="site-adventure-content"><p class="site-adventure-kicker" data-i18n="quizKicker">SNABBT · SOCIALT · MED SPELLEDARE</p><h3>Live Quiz</h3><p data-i18n="quizCopy">Dra igång livliga quizrundor på kalaset, konferensen eller lagträffen. Spelledaren håller i takten och alla spelar från sin egen skärm.</p><div class="site-adventure-meta"><span data-i18n="quizMetaOne">🎯 Quizrundor</span><span data-i18n="quizMetaTwo">👥 Alla sällskap</span></div><button class="site-adventure-button" type="button" disabled data-i18n="comingSoon">Fler spel på väg</button></div>
+     </article>
      <article class="site-adventure-card">
-      <div class="site-adventure-art"><span class="site-adventure-label">SPELKLART</span><span class="site-adventure-icon" aria-hidden="true">⛏️</span></div>
-      <div class="site-adventure-content"><p class="site-adventure-kicker">Bygg • leta • samarbeta</p><h3>Block Quest</h3><p>En färdig skattjakt i blockens värld. Lös uppdrag som lag och lås upp den stora finalen.</p><div class="site-adventure-meta"><span>🎯 11 uppdrag</span><span>👥 Flera lag</span></div><button class="site-adventure-button" type="button" onclick="openQuestGame()">Starta Block Quest <span aria-hidden="true">→</span></button></div>
+      <div class="site-adventure-art quest"><span class="site-adventure-label" data-i18n="playNow">SPELA NU</span><span class="site-adventure-icon" aria-hidden="true">⛏️</span></div>
+      <div class="site-adventure-content"><p class="site-adventure-kicker" data-i18n="questKicker">QUEST · SAMARBETE · ÄVENTYR</p><h3>Block Quest</h3><p data-i18n="questCopy">Ett Minecraft-inspirerat lagäventyr med resursjakt, pussel och en gemensam skattfinal.</p><div class="site-adventure-meta"><span data-i18n="questMetaOne">🎯 11 quests</span><span data-i18n="questMetaTwo">👥 Lagspel</span></div><button class="site-adventure-button" type="button" onclick="openQuestGame()"><span data-i18n="playBlockQuest">Spela Block Quest</span> <span aria-hidden="true">→</span></button></div>
      </article>
      <article class="site-adventure-card is-upcoming">
-      <div class="site-adventure-art pirate"><span class="site-adventure-label soon">KOMMER SNART</span><span class="site-adventure-icon" aria-hidden="true">🏴‍☠️</span></div>
-      <div class="site-adventure-content"><p class="site-adventure-kicker">Ledtrådar • skatt • mod</p><h3>Piratjakten</h3><p>Följ kartan, lös gåtor och hitta den gömda skatten tillsammans.</p><div class="site-adventure-meta"><span>🗺️ Skattkarta</span><span>🤝 Lagäventyr</span></div><button class="site-adventure-button" type="button" disabled>Kommer snart</button></div>
-     </article>
-     <article class="site-adventure-card is-upcoming">
-      <div class="site-adventure-art dino"><span class="site-adventure-label soon">KOMMER SNART</span><span class="site-adventure-icon" aria-hidden="true">🦖</span></div>
-      <div class="site-adventure-content"><p class="site-adventure-kicker">Upptäck • klura • överlev</p><h3>Dino Quest</h3><p>Ge er ut i urtiden och hjälp laget att lösa mysteriet före nästa dinosaurie.</p><div class="site-adventure-meta"><span>🌋 Urtidsvärld</span><span>🔍 Kluriga spår</span></div><button class="site-adventure-button" type="button" disabled>Kommer snart</button></div>
+      <div class="site-adventure-art challenge"><span class="site-adventure-label soon" data-i18n="comingSoon">Fler spel på väg</span><span class="site-adventure-icon" aria-hidden="true">⚡</span></div>
+      <div class="site-adventure-content"><p class="site-adventure-kicker" data-i18n="challengeKicker">ISBRYTARE · FRÅGESPORT · LAGSPEL</p><h3 data-i18n="challengeTitle">Grupputmaningar</h3><p data-i18n="challengeCopy">Korta interaktiva spel för workshops, konferenser och tillfällen när gruppen vill komma igång tillsammans.</p><div class="site-adventure-meta"><span data-i18n="challengeMetaOne">🎲 Snabba rundor</span><span data-i18n="challengeMetaTwo">🤝 Spela ihop</span></div><button class="site-adventure-button" type="button" disabled data-i18n="comingSoon">Fler spel på väg</button></div>
      </article>
     </div>
    </div>
   </section>
-
-  <section class="site-parent-section">
+  <section class="site-parent-section" id="events">
    <div class="site-shell site-parent-layout">
-    <div class="site-parent-copy"><p class="site-eyebrow">SKAPAT FÖR KALASET</p><h2>Barnens äventyr. Din enkla överblick.</h2><p>Du hjälper laget att komma igång och håller koll på äventyret. Barnen får ta sig an uppdragen tillsammans, i sin egen takt.</p></div>
+    <div class="site-parent-copy"><p class="site-eyebrow" data-i18n="eventEyebrow">SKAPA NÅGOT ATT MINNAS</p><h2 data-i18n="eventTitle">Ett spel kan samla hela rummet.</h2><p data-i18n="eventCopy">Starta ett firande, ge konferensen energi eller skapa en gemensam stund på nästa träff.</p></div>
     <div class="site-parent-points">
-     <article class="site-parent-point"><span aria-hidden="true">🧙</span><h3>Game Master leder</h3><p>Följ lagens framsteg och lås upp nästa steg.</p></article>
-     <article class="site-parent-point"><span aria-hidden="true">👥</span><h3>Lagen spelar ihop</h3><p>Team Creeper och Team Diamond samarbetar.</p></article>
-     <article class="site-parent-point"><span aria-hidden="true">📲</span><h3>Fungerar på skärmarna ni har</h3><p>Öppna spelet i webbläsaren på mobil och surfplatta.</p></article>
-     <article class="site-parent-point"><span aria-hidden="true">🎁</span><h3>En final att fira</h3><p>Avsluta skattjakten med en gemensam belöning.</p></article>
+     <article class="site-parent-point"><span aria-hidden="true">🎂</span><h3 data-i18n="eventOneTitle">Kalas & firande</h3><p data-i18n="eventOneCopy">En färdig quest för födelsedagar och andra stora dagar.</p></article>
+     <article class="site-parent-point"><span aria-hidden="true">🎙️</span><h3 data-i18n="eventTwoTitle">Konferens & kickoff</h3><p data-i18n="eventTwoCopy">Ett lekfullt sätt att välkomna, väcka energi och föra team närmare.</p></article>
+     <article class="site-parent-point"><span aria-hidden="true">🧠</span><h3 data-i18n="eventThreeTitle">Skola & förening</h3><p data-i18n="eventThreeCopy">Gemensamma utmaningar där alla kan hitta en roll.</p></article>
+     <article class="site-parent-point"><span aria-hidden="true">🌐</span><h3 data-i18n="eventFourTitle">På plats & hybrid</h3><p data-i18n="eventFourCopy">Samla deltagarna i samma aktivitet via skärmarna de har.</p></article>
     </div>
    </div>
+  </section>
+  <section class="site-event-close">
+   <div class="site-shell"><h2 data-i18n="closeTitle">Gör plats för lek.</h2><p data-i18n="closeCopy">Hitta aktiviteten som passar nästa träff och samla alla i spelet.</p><a href="#experiences"><span data-i18n="closeCta">Se aktiviteterna</span> <span aria-hidden="true">→</span></a></div>
   </section>
  </main>
  <footer class="site-footer">
   <div class="site-shell site-footer-inner">
-   <a class="site-brand" href="#top" aria-label="Minecraft Quest – tillbaka till toppen"><span class="site-brand-mark" aria-hidden="true"></span><span><span class="site-brand-name">MINECRAFT QUEST</span><span class="site-brand-note">ÄVENTYR FÖR BARNKALAS</span></span></a>
-   <p class="site-footer-copy">Färdiga digitala äventyr för lek, fantasi och lagarbete.</p>
-   <nav class="site-footer-links" aria-label="Sidfot"><a href="#sa-fungerar">Så fungerar det</a><a href="#aventyr">Äventyr</a></nav>
+   <a class="site-brand" href="#top" aria-label="Till sidans början"><span><span class="site-brand-name" data-i18n="brand">INTERAKTIVA GRUPPSPEL</span><span class="site-brand-note" data-i18n="brandNote">QUIZ · QUEST · LAGLEKAR</span></span></a>
+   <p class="site-footer-copy" data-i18n="footerCopy">Interaktiva spel för stunder vi delar.</p>
+   <nav class="site-footer-links" aria-label="Sidfot"><a href="#how-it-works" data-i18n="navHow">Så fungerar det</a><a href="#experiences" data-i18n="navExperiences">Aktiviteter</a><a href="#events" data-i18n="navEvents">För alla tillfällen</a></nav>
   </div>
  </footer>
 </div>
@@ -425,10 +502,34 @@ function questJumpCard(i,c,d){
 function teamUnlockCard(key,name,t){const final=t.q>=quests.length-1;const next=quests[Math.min(t.q+1,quests.length-1)];const status=final?(t.approved?'Slutquestet är godkänt.':'Det här är lagets sista quest.'):(t.approved?'Redo att låsa upp nästa quest.':t.done?'Väntar på att du godkänner laget.':'Laget behöver bli klart och godkännas.');return `<div class="card ${key}"><h2>🔓 ${name}</h2><p>${status}</p>${final?`<p>🏁 ${next.icon} ${next.title}</p>`:`<p>Nästa: Quest ${t.q+2} – ${next.icon} ${next.title}</p>`}<button ${t.approved&&!final?'':'disabled'} onclick="send('unlock_team',{team:'${key}'})">${final?'🏁 INGA FLER QUEST':'🔓 LÅS UPP ENDAST FÖR '+(key==='creeper'?'CREEPER':'DIAMOND')}</button></div>`}
 function jumpToQuest(i,team){send('jump_team_to_quest',{quest:i,team})}function teamCard(key,name,t){const q=quests[t.q];return `<div class="card ${key}"><h2>${name}</h2><h3>Quest ${t.q+1}: ${q.icon} ${q.title}</h3><p>${t.approved?'<span class="ok">✓ GODKÄND</span>':t.done?'<span class="wait">✓ KLAR – redo</span>':'⏳ Pågår'}</p><button ${t.done&&!t.approved?'':'disabled'} onclick="send('approve',{team:'${key}'})">✅ GODKÄNN QUEST</button></div>`}
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(b&&!b.disabled){sfx('click');b.classList.remove('button-pop');void b.offsetWidth;b.classList.add('button-pop')}});
-function toggleSiteMenu(button){const nav=document.querySelector('.site-nav');const open=nav.classList.toggle('menu-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'Stäng':'Meny'}
-function closeSiteMenu(){const nav=document.querySelector('.site-nav'),button=document.querySelector('.site-menu-toggle');nav?.classList.remove('menu-open');if(button){button.setAttribute('aria-expanded','false');button.textContent='Meny'}}
+const siteTranslations={
+ en:{title:'Interactive Group Games | Bring Everyone Into The Game',description:'Quizzes, quests and group games for kids’ parties, friend groups, conferences and more.',brand:'INTERACTIVE GROUP GAMES',brandNote:'QUIZ · QUEST · TEAM PLAY',navHow:'How it works',navFor:'Who is it for?',navExperiences:'Activities',navEvents:'For every occasion',heroEyebrow:'QUIZZES · QUESTS · GROUP GAMES',heroTitle:'Bring everyone into the <em>game.</em>',heroCopy:'From a birthday treasure hunt to a quiz with friends or team challenges at work — choose a game that gets everyone involved.',heroCta:'Find your activity',heroLink:'How it works',proofOne:'Nothing to install',proofTwo:'◷&nbsp; Play on the screens you already have',artTop:'ONE GROUP. SO MANY WAYS TO PLAY.',artReady:'READY TO PLAY',artTitle:'EVERYONE <b>IN THE GAME</b>',artQuiz:'QUICK QUIZ ROUND',artLive:'LIVE',artQuestion:'Which team will take the lead?',teamOne:'Team North',teamTwo:'Team South',everyonePlays:'Everyone plays',joinCode:'SAMPLE JOIN CODE',joinScreen:'Join from any screen',artCaptionBold:'One shared moment.',artCaption:'Everyone is in.',howEyebrow:'EASY TO HOST',howTitle:'Turn a room full of people into a game everyone can join.',howCopy:'Choose an activity, share a code and let the group play together.',stepOneLabel:'01 / CHOOSE',stepOneTitle:'Pick a format',stepOneCopy:'Choose a quiz, a story-led quest or a quick team challenge.',stepTwoLabel:'02 / JOIN',stepTwoTitle:'Bring everyone in',stepTwoCopy:'Players join in a browser with a code, using the phones and tablets already at the event.',stepThreeLabel:'03 / PLAY',stepThreeTitle:'Start the game',stepThreeCopy:'Set the pace, follow each team and lead the group to a shared finish.',audienceEyebrow:'PLAY YOUR WAY',audienceTitle:'Different groups. The right kind of fun.',audienceCopy:'Pick a vibe that fits the people who are playing.',kidsAge:'KIDS & FAMILIES',kidsTitle:'A party full of discoveries',kidsCopy:'Treasure hunts, colourful missions and clever puzzles where kids work together, get moving and celebrate every little win.',kidsTagOne:'Treasure hunt',kidsTagTwo:'Teamwork',kidsTagThree:'Party favourite',kidsCta:'Play Block Quest',youngAge:'YOUNG ADULTS · 18–25',youngTitle:'For friend groups with a competitive streak',youngCopy:'Fast music and pop culture quizzes, surprise duels and team challenges for student life, pre-party fun and late-night game sessions.',youngTagOne:'Music quiz',youngTagTwo:'Duels',youngTagThree:'Friend groups',adultAge:'ADULTS · 25–60',adultTitle:'Make your gathering the highlight of the day',adultCopy:'Thoughtful quizzes, icebreakers and team challenges for kickoffs, conferences or dinners where people want to connect.',adultTagOne:'Kickoff',adultTagTwo:'Conference',adultTagThree:'Dinner',comingSoon:'More games on the way',experienceEyebrow:'CHOOSE HOW TO PLAY',experienceTitle:'One platform. More ways to connect.',experienceCopy:'Start with Block Quest. Live Quiz and more group games are in development.',quizKicker:'FAST · SOCIAL · HOST-LED',quizCopy:'Run lively quiz rounds at a party, conference or team gathering. The host sets the pace while everyone plays from their own screen.',quizMetaOne:'🎯 Quiz rounds',quizMetaTwo:'👥 Any group',playNow:'PLAY NOW',questKicker:'QUEST · TEAMWORK · ADVENTURE',questCopy:'A Minecraft-inspired team adventure with resource hunts, puzzles and a shared treasure finale.',questMetaOne:'🎯 11 quests',questMetaTwo:'👥 Team play',playBlockQuest:'Play Block Quest',challengeKicker:'ICEBREAKERS · TRIVIA · TEAM PLAY',challengeTitle:'Group Challenges',challengeCopy:'Short interactive games for workshops, conferences and moments when a group wants to connect.',challengeMetaOne:'🎲 Quick rounds',challengeMetaTwo:'🤝 Play together',eventEyebrow:'MAKE A MOMENT TO REMEMBER',eventTitle:'One game can bring the whole room together.',eventCopy:'Kick off a celebration, energise a conference or create a shared moment at your next gathering.',eventOneTitle:'Parties & celebrations',eventOneCopy:'A ready-made quest for birthdays and special moments.',eventTwoTitle:'Conferences & kickoffs',eventTwoCopy:'A playful way to welcome, energise and connect teams.',eventThreeTitle:'Schools & communities',eventThreeCopy:'Shared challenges where everyone can find a way to take part.',eventFourTitle:'In-person & hybrid',eventFourCopy:'Bring people into the same activity across the screens they have.',closeTitle:'Make room for play.',closeCopy:'Find the activity for your next gathering and bring everyone into the game.',closeCta:'Explore activities',footerCopy:'Interactive games for the moments we share.'},
+ de:{title:'Interaktive Gruppenspiele | Alle ins Spiel bringen',description:'Quiz, Quests und Gruppenspiele für Kindergeburtstage, Freundeskreise, Konferenzen und mehr.',brand:'INTERAKTIVE GRUPPENSPIELE',brandNote:'QUIZ · QUEST · TEAMPLAY',navHow:'So funktioniert’s',navFor:'Für wen?',navExperiences:'Aktivitäten',navEvents:'Für jeden Anlass',heroEyebrow:'QUIZ · QUESTS · GRUPPENSPIELE',heroTitle:'Alle ins <em>Spiel bringen.</em>',heroCopy:'Von der Schatzsuche zum Kindergeburtstag über Quizrunden mit Freunden bis zu Team-Challenges bei der Arbeit — hier finden alle ins Spiel.',heroCta:'Passende Aktivität finden',heroLink:'So funktioniert’s',proofOne:'Keine App nötig',proofTwo:'◷&nbsp; Spielt auf den vorhandenen Bildschirmen',artTop:'EINE GRUPPE. VIELE SPIELMÖGLICHKEITEN.',artReady:'SPIELBEREIT',artTitle:'ALLE <b>SPIELEN MIT</b>',artQuiz:'SCHNELLE QUIZRUNDE',artLive:'LIVE',artQuestion:'Welches Team übernimmt die Führung?',teamOne:'Team Nord',teamTwo:'Team Süd',everyonePlays:'Alle spielen mit',joinCode:'BEISPIELCODE',joinScreen:'Auf jedem Bildschirm dabei',artCaptionBold:'Ein gemeinsamer Moment.',artCaption:'Alle sind dabei.',howEyebrow:'EINFACH ZU MODERIEREN',howTitle:'Aus einer Gruppe wird ein Spiel, bei dem alle mitmachen können.',howCopy:'Aktivität auswählen, Code teilen und gemeinsam losspielen.',stepOneLabel:'01 / AUSWÄHLEN',stepOneTitle:'Format auswählen',stepOneCopy:'Wählt ein Quiz, eine Quest mit Geschichte oder eine schnelle Team-Challenge.',stepTwoLabel:'02 / BEITRETEN',stepTwoTitle:'Alle zusammenbringen',stepTwoCopy:'Die Teilnehmenden treten im Browser mit einem Code bei und nutzen ihre vorhandenen Smartphones und Tablets.',stepThreeLabel:'03 / SPIELEN',stepThreeTitle:'Das Spiel starten',stepThreeCopy:'Gebt das Tempo vor, verfolgt den Teamfortschritt und führt alle ins gemeinsame Finale.',audienceEyebrow:'SPIELT AUF EURE ART',audienceTitle:'Unterschiedliche Gruppen. Der passende Spaß.',audienceCopy:'Wählt die Stimmung, die zu euren Mitspielenden passt.',kidsAge:'KINDER & FAMILIEN',kidsTitle:'Ein Fest voller Entdeckungen',kidsCopy:'Schatzsuchen, bunte Missionen und knifflige Rätsel, bei denen Kinder zusammenarbeiten, in Bewegung kommen und jeden kleinen Erfolg feiern.',kidsTagOne:'Schatzsuche',kidsTagTwo:'Teamwork',kidsTagThree:'Geburtstagsfavorit',kidsCta:'Block Quest spielen',youngAge:'JUNGE ERWACHSENE · 18–25',youngTitle:'Für Freundeskreise mit Wettbewerbsgeist',youngCopy:'Schnelle Musik- und Popkultur-Quiz, überraschende Duelle und Team-Challenges für den Uni-Alltag, den Abend mit Freunden und lange Spieleabende.',youngTagOne:'Musikquiz',youngTagTwo:'Duelle',youngTagThree:'Freundeskreis',adultAge:'ERWACHSENE · 25–60',adultTitle:'Macht euer Treffen zum Höhepunkt des Tages',adultCopy:'Durchdachte Quiz, Icebreaker und Team-Challenges für Kick-off, Konferenz oder Dinner, bei denen Menschen einander kennenlernen.',adultTagOne:'Kick-off',adultTagTwo:'Konferenz',adultTagThree:'Dinner',comingSoon:'Weitere Spiele folgen',experienceEyebrow:'WÄHLT EURE SPIELART',experienceTitle:'Eine Plattform. Viele Wege zusammenzukommen.',experienceCopy:'Startet mit Block Quest. Live Quiz und weitere Gruppenspiele sind in Entwicklung.',quizKicker:'SCHNELL · GESELLIG · MODERIERT',quizCopy:'Spielt lebhafte Quizrunden auf Feiern, Konferenzen oder Teamtreffen. Die Moderation gibt das Tempo vor und alle spielen auf ihrem eigenen Bildschirm.',quizMetaOne:'🎯 Quizrunden',quizMetaTwo:'👥 Für jede Gruppe',playNow:'JETZT SPIELEN',questKicker:'QUEST · TEAMWORK · ABENTEUER',questCopy:'Ein von Minecraft inspiriertes Teamabenteuer mit Ressourcensuche, Rätseln und einem gemeinsamen Schatzfinale.',questMetaOne:'🎯 11 Quests',questMetaTwo:'👥 Teamspiel',playBlockQuest:'Block Quest spielen',challengeKicker:'ICEBREAKER · QUIZ · TEAMPLAY',challengeTitle:'Team-Challenges',challengeCopy:'Kurze interaktive Spiele für Workshops, Konferenzen und Momente, in denen eine Gruppe zusammenfinden soll.',challengeMetaOne:'🎲 Schnelle Runden',challengeMetaTwo:'🤝 Gemeinsam spielen',eventEyebrow:'SCHAFFT EINEN MOMENT, DER BLEIBT',eventTitle:'Ein Spiel bringt den ganzen Raum zusammen.',eventCopy:'Startet eine Feier, belebt eine Konferenz oder schafft einen gemeinsamen Moment beim nächsten Treffen.',eventOneTitle:'Feiern & Geburtstage',eventOneCopy:'Eine fertige Quest für Geburtstage und besondere Momente.',eventTwoTitle:'Konferenzen & Kick-offs',eventTwoCopy:'Ein spielerischer Weg, Teams willkommen zu heißen, zu beleben und zu verbinden.',eventThreeTitle:'Schulen & Vereine',eventThreeCopy:'Gemeinsame Herausforderungen, bei denen alle mitmachen können.',eventFourTitle:'Vor Ort & hybrid',eventFourCopy:'Alle nehmen über die vorhandenen Bildschirme an derselben Aktivität teil.',closeTitle:'Macht Platz fürs Spielen.',closeCopy:'Findet die passende Aktivität für euer nächstes Treffen und bringt alle ins Spiel.',closeCta:'Aktivitäten ansehen',footerCopy:'Interaktive Spiele für gemeinsame Momente.'}
+};
+let siteLanguage='sv';
+const siteDefaultSwedish=Object.fromEntries([...document.querySelectorAll('#site-home [data-i18n]')].map(el=>[el.dataset.i18n,el.innerHTML]));
+function setSiteLanguage(language){
+ if(language!=='sv'&&!siteTranslations[language])language='sv';
+ siteLanguage=language;const t=language==='sv'?siteDefaultSwedish:siteTranslations[language];
+ document.documentElement.lang=language;
+ document.title=t?.title||'Interaktiva gruppspel | Samla alla i spelet';
+ const description=document.querySelector('meta[name="description"]');if(description)description.content=t?.description||'Quiz, quests och gruppspel för barnkalas, kompisgäng, konferenser och andra tillfällen.';
+ if(t)document.querySelectorAll('#site-home [data-i18n]').forEach(el=>{if(t[el.dataset.i18n]!==undefined)el.innerHTML=t[el.dataset.i18n]});
+ const labels=document.querySelector('#language-switch');if(labels)labels.setAttribute('aria-label',language==='de'?'Sprache wählen':language==='en'?'Choose language':'Välj språk');
+ const nav=document.querySelector('.site-links');if(nav)nav.setAttribute('aria-label',language==='de'?'Hauptmenü':language==='en'?'Main menu':'Huvudmeny');
+ const footerNav=document.querySelector('.site-footer-links');if(footerNav)footerNav.setAttribute('aria-label',language==='de'?'Fußzeile':language==='en'?'Footer':'Sidfot');
+ const art=document.querySelector('.site-hero-art');if(art)art.setAttribute('aria-label',language==='de'?'Illustration eines interaktiven Gruppenspiels':language==='en'?'Illustration of an interactive group game':'Illustration av ett interaktivt gruppspel');
+ document.querySelectorAll('#language-switch [data-language]').forEach(button=>{const selected=button.dataset.language===language;button.setAttribute('aria-pressed',String(selected))});
+ const menuButton=document.querySelector('.site-menu-toggle');if(menuButton){const open=document.querySelector('.site-nav')?.classList.contains('menu-open');const labels={sv:open?'Stäng':'Meny',en:open?'Close':'Menu',de:open?'Schließen':'Menü'};menuButton.textContent=labels[language];menuButton.setAttribute('aria-label',labels[language])}
+ try{localStorage.setItem('siteLanguage',language)}catch{}
+}
+function toggleSiteMenu(button){const nav=document.querySelector('.site-nav');const open=nav.classList.toggle('menu-open');button.setAttribute('aria-expanded',String(open));const labels={sv:open?'Stäng':'Meny',en:open?'Close':'Menu',de:open?'Schließen':'Menü'};button.textContent=labels[siteLanguage];button.setAttribute('aria-label',labels[siteLanguage])}
+function closeSiteMenu(){const nav=document.querySelector('.site-nav'),button=document.querySelector('.site-menu-toggle');nav?.classList.remove('menu-open');if(button){const labels={sv:'Meny',en:'Menu',de:'Menü'};button.setAttribute('aria-expanded','false');button.textContent=labels[siteLanguage];button.setAttribute('aria-label',labels[siteLanguage])}}
 function openQuestGame(){document.body.classList.add('in-game');closeSiteMenu();if(!game)login();else render();window.scrollTo({top:0,behavior:'auto'})}
 function showHome(){document.body.classList.remove('in-game');closeSiteMenu();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('#language-switch [data-language]').forEach(button=>button.addEventListener('click',()=>setSiteLanguage(button.dataset.language)));
+let savedSiteLanguage='sv';try{savedSiteLanguage=localStorage.getItem('siteLanguage')||'sv'}catch{}
+setSiteLanguage(savedSiteLanguage);
 document.querySelectorAll('#site-home .site-links a').forEach(link=>link.addEventListener('click',closeSiteMenu));
 </script>
 </body></html>
