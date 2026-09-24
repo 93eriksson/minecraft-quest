@@ -166,7 +166,8 @@ body.in-game #game-view{display:block}
 @media(max-width:450px){.site-event-board{left:10px;top:85px;width:61%;padding:10px}.site-event-board h3{font-size:14px;margin:10px 0 8px}.site-event-option{padding:6px;font-size:8px}.site-join-card{right:9px;top:143px;width:29%;padding:11px 7px}.site-join-card strong{font-size:17px}.site-event-art-caption{left:10px;bottom:10px}}
 
 .language-switch{display:flex;align-items:center;gap:5px;padding:5px;border:1px solid #e1e6dc;border-radius:999px;background:#fff}
-#site-home button.language-button{display:grid;place-items:center;width:38px;height:38px;margin:0;padding:0;border:2px solid transparent;border-radius:50%;background:transparent;box-shadow:none;font-size:20px;line-height:1;transition:background .16s ease,transform .16s ease,border-color .16s ease}
+#site-home button.language-button{display:grid;place-items:center;width:38px;height:38px;margin:0;padding:0;border:2px solid transparent;border-radius:50%;background:transparent;color:#1f3028;box-shadow:none;font-size:20px;line-height:1;transition:background .16s ease,transform .16s ease,border-color .16s ease}
+#site-home button.language-button svg{display:block;width:24px;height:16px;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.22)}
 #site-home button.language-button:hover{background:#f1f5ed;transform:translateY(-1px)}
 #site-home button.language-button[aria-pressed="true"]{border-color:#287350;background:#e8f2e2}
 #site-home button.language-button:focus-visible{outline:3px solid #e3a63f;outline-offset:2px}
@@ -202,9 +203,9 @@ body.in-game #game-view{display:block}
    </a>
    <div class="site-nav-right">
     <div class="language-switch" id="language-switch" role="group" aria-label="Välj språk">
-     <button class="language-button" type="button" data-language="sv" aria-label="Svenska" aria-pressed="true" title="Svenska">🇸🇪</button>
-     <button class="language-button" type="button" data-language="en" aria-label="English" aria-pressed="false" title="English">🇬🇧</button>
-     <button class="language-button" type="button" data-language="de" aria-label="Deutsch" aria-pressed="false" title="Deutsch">🇩🇪</button>
+     <button class="language-button" type="button" data-language="sv" aria-label="Svenska" aria-pressed="true" title="Svenska"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#006aa7"/><path fill="#fecc00" d="M7 0h2v7h15v2H9v7H7V9H0V7h7z"/></svg></button>
+     <button class="language-button" type="button" data-language="en" aria-label="English" aria-pressed="false" title="English"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#012169"/><path d="M0 0l24 16M24 0L0 16" stroke="#fff" stroke-width="3.4"/><path d="M0 0l24 16M24 0L0 16" stroke="#c8102e" stroke-width="1.5"/><path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5"/><path d="M12 0v16M0 8h24" stroke="#c8102e" stroke-width="2.6"/></svg></button>
+     <button class="language-button" type="button" data-language="de" aria-label="Deutsch" aria-pressed="false" title="Deutsch"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.34" fill="#111"/><rect y="5.33" width="24" height="5.34" fill="#d00"/><rect y="10.66" width="24" height="5.34" fill="#ffce00"/></svg></button>
     </div>
     <button class="site-menu-toggle" type="button" aria-label="Öppna meny" aria-expanded="false" onclick="toggleSiteMenu(this)">Meny</button>
    </div>
